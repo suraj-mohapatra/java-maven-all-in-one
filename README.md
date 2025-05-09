@@ -1,2 +1,3 @@
-# java-maven-all-in-one
-A Maven project that makes use of  of popular Maven plugins
+# Java Maven All-In-One
+
+This is a Java Maven project that makes use of popular Maven plugins

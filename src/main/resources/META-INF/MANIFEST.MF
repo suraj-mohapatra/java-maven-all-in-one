@@ -1,0 +1,2 @@
+Main-Class: com.ugleagle.JavaMavenAllInOne
+X-COMMENT: src/main/resources/META-INF/MANIFEST.MF is ignored as Maven does this for you
