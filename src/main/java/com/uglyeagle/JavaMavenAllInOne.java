@@ -1,4 +1,4 @@
-package com.ugleagle;
+package com.uglyeagle;
 
 import static org.fusesource.jansi.Ansi.ansi;
 import org.json.JSONObject;
