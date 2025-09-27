@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.uglyeagle</groupId>
     <artifactId>java-maven-all-in-one</artifactId>
@@ -7,11 +11,14 @@
     <packaging>jar</packaging>
     <name>java-maven-all-in-one</name>
     
+    <description>sample Java project demonstrating Maven plugins</description>
+    <url>https://github.com/suraj-mohapatra/java-maven-all-in-one.git</url>
+    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <mainClass>com.uglyeagle.JavaMavenAllInOne</mainClass>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <mainClass>com.uglyeagle.Main</mainClass>
     </properties>
     
     <dependencies>
@@ -34,7 +41,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.14.0</version>
                 <configuration>
-                    <release>21</release> <!-- this setting overrides the below 2 -->
+                    <release>17</release> <!-- this setting overrides the below 2 -->
                     <!--<source>${maven.compiler.source}</source>-->
                     <!--<target>${maven.compiler.target}</target>-->
                     <fork>true</fork>                   
@@ -75,7 +82,6 @@
                 </executions>
             </plugin>
             
-            <!-- https://maven.apache.org/plugins/maven-assembly-plugin/  -->
             <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -139,6 +145,51 @@
                     <removeExistingSignatures>true</removeExistingSignatures>
                 </configuration>
             </plugin>-->
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.6.1</version>
+                <executions>
+                    <execution>
+                        <id>enforce-rules</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireJavaVersion>
+                                    <version>[17,21]</version>
+                                </requireJavaVersion>
+                                <requireMavenVersion>
+                                    <version>[3.8,)</version>
+                                </requireMavenVersion>
+                                <banDuplicatePomDependencyVersions/>
+                                <!--<requireEncoding>
+                                    <encoding>UTF-8</encoding>
+                                </requireEncoding>-->
+                                <!--<requireReleaseDeps>
+                                    <onlyWhenRelease>true</onlyWhenRelease>
+                                </requireReleaseDeps>-->
+                                <bannedDependencies>
+                                    <excludes>
+                                        <exclude>commons-logging:commons-logging</exclude>
+                                    </excludes>
+                                    <message>Do not use commons-logging, prefer SLF4J!</message>
+                                </bannedDependencies>
+                                <!--<requirePluginVersions/>-->
+                                <!--<dependencyConvergence/>-->
+                                <!--<banDuplicateClasses/>-->
+                                <requireOS>
+                                    <family>windows</family>
+                                    <message>Build is only supported on Windows systems.</message>
+                                </requireOS>
+                            </rules>
+                            <fail>true</fail>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         
         </plugins>
         <finalName>java-maven-all-in-one</finalName>   

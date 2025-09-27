@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class JavaMavenAllInOne {
+public class Main {
 
     public static void main(String[] args) {
         
@@ -15,7 +15,7 @@ public class JavaMavenAllInOne {
                 put("status", "OK");
         System.out.println(ansi().fgGreen().a("\n" + json.toString(4) + "\n").reset());
 
-        try (InputStream input = JavaMavenAllInOne.class.getClassLoader().getResourceAsStream("config.properties")) {
+        try (InputStream input = Main.class.getClassLoader().getResourceAsStream("config.properties")) {
             if (input == null) {
                 System.out.println("Sorry, unable to find config.properties");
                 return;
