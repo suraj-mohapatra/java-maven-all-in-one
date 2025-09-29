@@ -8,7 +8,7 @@ maven-dependency-plugin → Copy, unpack, analyze, or list dependencies.
 
 maven-resources-plugin → Filter and copy resources with placeholders replaced.
 
-## Testing & Quality
+### Testing & Quality
 
 maven-surefire-plugin → Run unit tests.
 
